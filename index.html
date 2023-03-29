@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Gerador de Credenciais</title>
+	<style>
+		body {
+			background-color: black;
+			color: white;
+			font-size: 20px;
+			text-align: center;
+			margin-top: 100px;
+		}
+
+		button {
+			font-size: 20px;
+			padding: 10px;
+			margin-bottom: 20px;
+		}
+
+		input {
+			font-size: 20px;
+			padding: 10px;
+		}
+
+		.error {
+			color: red;
+			font-size: 16px;
+			margin-top: 10px;
+		}
+	</style>
+</head>
+<body>
+	<h1>Gerador de Credenciais</h1>
+	<button onclick="gerarCredencial()">Gerar ID</button><br>
+	<label for="credencial">Digite sua credencial:</label><br>
+	<input type="text" id="credencial" name="credencial"><br>
+	<button onclick="logar()">Logar</button><br>
+	<div id="erro" class="error"></div>
+
+	<script>
+		var credencial = '';
+
+		function gerarCredencial() {
+			if (credencial === '') {
+				credencial = Math.floor(Math.random() * 90000) + 10000;
+				alert("Sua credencial é: " + credencial);
+			}
+		}
+
+		function logar() {
+			var inputCredencial = document.getElementById("credencial").value;
+
+			if (inputCredencial === '') {
+				document.getElementById("erro").innerHTML = "Usuário não registrado no sistema.";
+			} else if (inputCredencial === credencial.toString()) {
+				window.location.href = "https://devandrey9e.github.io/siac.bope/";
+			} else {
+				document.getElementById("erro").innerHTML = "Usuário não registrado no sistema.";
+			}
+		}
+	</script>
+</body>
+</html>
+
